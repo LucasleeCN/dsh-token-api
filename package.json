@@ -1,7 +1,7 @@
 {
   "name": "dsh-client-ui-token-billing",
-  "version": "0.2.0",
-  "description": "DeepSeek Harness web UI plugin: a floating panel showing current API session token usage, context pressure, and configurable cost estimation.",
+  "version": "1.0.0",
+  "description": "DeepSeek Harness web UI plugin: floating API token usage, context pressure, reasoning-effort control, and cost estimation with official peak/off-peak pricing.",
   "keywords": [
     "deepseek-harness",
     "dsh",
@@ -13,6 +13,14 @@
     "webui"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasleeCN/dsh-token-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LucasleeCN/dsh-token-api/issues"
+  },
+  "homepage": "https://github.com/LucasleeCN/dsh-token-api#readme",
   "type": "module",
   "main": "lib/index.js",
   "exports": {

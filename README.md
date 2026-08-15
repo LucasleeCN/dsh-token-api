@@ -5,6 +5,16 @@ DeepSeek Harness 官方 Web UI 的客户端插件：在界面右下角注入一�
 UI 使用 Harness 官方设计变量（`--dsw-alias-*`），自动适配浅色/深色主题，并参考
 Claude Code 的紧凑信息框布局。
 
+## About
+
+| 项 | 内容 |
+| --- | --- |
+| 仓库 | https://github.com/LucasleeCN/dsh-token-api |
+| 插件类型 | `dsh.client` 双面包（Web UI 客户端插件） |
+| 最新版本 | 1.0.0 |
+| 许可证 | MIT |
+| 发现方式 | GitHub topic `dsh-plugin` |
+
 ## 功能
 
 - 读取官方 `session.list` RPC 返回的 projection：
@@ -30,11 +40,15 @@ Claude Code 的紧凑信息框布局。
 dsh-client-ui-token-billing/
 ├─ package.json
 ├─ cordis.patch.yml
+├─ CHANGELOG.md
 ├─ lib/
 │  ├─ index.js      # Host 半侧（官方价格抓取 + 同源价格路由）
 │  └─ client.js     # Browser 半侧（浮动面板）
-└─ test/
-   └─ client.test.mjs
+├─ test/
+│  └─ client.test.mjs
+└─ .github/workflows/
+   ├─ check.yml
+   └─ release.yml
 ```
 
 ## 安装
@@ -42,7 +56,7 @@ dsh-client-ui-token-billing/
 该插件是一个标准的 `dsh.client` 双面包，必须能被 profile 的
 `ctx.baseUrl` 解析到（通常就是 profile 自己的 `node_modules`）。
 
-发布到 GitHub 后，也可以直接用 npm 从 Git 安装（把地址换成你的仓库）：
+**从 Git 安装（推荐）：**
 
 ```json
 {
@@ -51,6 +65,9 @@ dsh-client-ui-token-billing/
   }
 }
 ```
+
+也可以从 GitHub Release 下载 `dsh-client-ui-token-billing-1.0.0.tgz` 后解压到
+`<DSH_HOME>/profiles/web/node_modules/dsh-client-ui-token-billing`。
 
 ### 方法 A：作为 profile bundle（推荐）
 
@@ -123,6 +140,26 @@ Content-Type: application/json
 - 面板右上角会显示当前价格所处时段（`当前` / `高峰` / `空闲` / `手动`）。
 - 点击 ⚙ 可手动覆盖价格；保存后优先使用手动价格，恢复官方价格即删除覆盖。
 - 手动价格保存在 `localStorage`（键：`dsh-client-ui-token-billing.prices.v1`）。
+
+## Release
+
+每次推送 `v*` 标签，GitHub Actions 会自动：
+
+1. 运行 `npm run check`
+2. 执行 `npm pack`
+3. 创建 GitHub Release 并上传 `.tgz` 附件
+
+```powershell
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+## 加入 dsh 插件社区
+
+1. 打开仓库页面 https://github.com/LucasleeCN/dsh-token-api
+2. 在右侧 **About** 中点击齿轮，添加 topic：`dsh-plugin`
+3. 建议同时添加：`deepseek-harness`、`dsh`、`plugin`、`token-billing`
+4. 保存后仓库会出现在 https://github.com/topics/dsh-plugin
 
 ## 开发
 
