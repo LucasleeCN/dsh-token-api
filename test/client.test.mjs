@@ -220,7 +220,8 @@ test('apply() renders token usage, context pressure, cost, and reasoning level',
   module.apply({ effect: () => {} })
   await window.dshTokenBillingRefresh()
 
-  assert.equal(byId('dsh-tb-model').textContent, 'deepseek-v4-pro')
+  assert.equal(byId('dsh-tb-model-name').textContent, 'deepseek-v4-pro')
+  assert.equal(byId('dsh-tb-provider').textContent, 'deepseek-official')
   assert.equal(byId('dsh-tb-tok-input').textContent, '1.0K')
   assert.equal(byId('dsh-tb-tok-output').textContent, '2.0K')
   assert.equal(byId('dsh-tb-tok-cache-read').textContent, '3.0K')
@@ -230,6 +231,7 @@ test('apply() renders token usage, context pressure, cost, and reasoning level',
   assert.equal(byId('dsh-tb-ctx-pct').textContent, '5%')
   assert.equal(byId('dsh-tb-ctx-bar').style.width, '5%')
   assert.equal(byId('dsh-tb-cost-total').textContent, '¥0.0195')
+  assert.equal(byId('dsh-tb-cost-total-line').textContent, '¥0.0195')
   assert.equal(byId('dsh-tb-reasoning-value').textContent, 'High')
   assert.match(byId('dsh-tb-reasoning-labels').innerHTML, /Off/)
   assert.match(byId('dsh-tb-reasoning-labels').innerHTML, /Max/)
