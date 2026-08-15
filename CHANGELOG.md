@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.4
+
+- Fix collapsed widget vertical height to a fixed `80px`, keeping the restored layout compact enough to avoid clipping.
+
 ## 1.0.3
 
 - Revert the 52px compact layout.
