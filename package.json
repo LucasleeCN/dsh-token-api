@@ -1,0 +1,48 @@
+{
+  "name": "dsh-client-ui-token-billing",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness web UI plugin: a floating panel showing current API session token usage, context pressure, and configurable cost estimation.",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "plugin",
+    "client-plugin",
+    "token",
+    "billing",
+    "usage",
+    "webui"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node test/client.test.mjs",
+    "check": "node --check lib/index.js && node --check lib/client.js && npm test"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [],
+      "immediately": true
+    }
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,12 @@
+# dsh-client-ui-token-billing bundle patch.
+#
+# Adds the browser-side token / cost panel row to the web composition. The
+# package is a `dsh.client` dual-face package: the node half is an empty Loader
+# entry, the browser half injects a floating panel that reads the official
+# session projections (tokenUsage / contextPressure) through the local /api
+# RPC bridge and estimates cost with user-configurable model prices.
+- insert:
+    - id: ui-token-billing
+      name: 'dsh-client-ui-token-billing'
+      config:
+        enabled: true
