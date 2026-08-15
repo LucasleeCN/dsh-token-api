@@ -1,6 +1,6 @@
 {
   "name": "dsh-client-ui-token-billing",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "DeepSeek Harness web UI plugin: a floating panel showing current API session token usage, context pressure, and configurable cost estimation.",
   "keywords": [
     "deepseek-harness",
