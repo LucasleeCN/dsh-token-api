@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3
+
+- Revert the 52px compact layout.
+- Fix collapsed widget vertical height to a fixed `120px`, restoring the previous UI.
+
 ## 1.0.1
 
 - Fix collapsed widget not opening the detail panel after drag support (`pointerdown` was suppressing the click event).
