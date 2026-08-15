@@ -1,9 +1,5 @@
 # Changelog
 
-## 1.0.2
-
-- Fix collapsed widget vertical height: fixed to 52px and compacted the inner layout so content is not clipped.
-
 ## 1.0.1
 
 - Fix collapsed widget not opening the detail panel after drag support (`pointerdown` was suppressing the click event).
