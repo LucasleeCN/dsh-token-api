@@ -16,7 +16,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
       - run: npm run check
       - run: npm pack --pack-destination dist
       - uses: softprops/action-gh-release@v2
