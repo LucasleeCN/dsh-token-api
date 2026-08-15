@@ -26,6 +26,11 @@ function makeElement(id) {
     value: '',
     parentNode: null,
     children: [],
+    offsetWidth: 80,
+    offsetHeight: 32,
+    getBoundingClientRect() {
+      return { top: 0, bottom: 0, left: 0, right: 0, width: 80, height: 32 }
+    },
     classList: {
       add: (...names) => names.forEach(name => classes.add(name)),
       remove: (...names) => names.forEach(name => classes.delete(name)),
@@ -50,7 +55,7 @@ function makeElement(id) {
       for (const handler of listeners.get(type) || []) handler(event)
     },
     querySelector(selector) {
-      if (selector.startsWith('#')) return document.getElementById(selector.slice(1))
+      if (selector.startsWith('#') && globalThis.document) return globalThis.document.getElementById(selector.slice(1))
       return null
     }
   }
@@ -88,12 +93,15 @@ function createHarness(storage = {}) {
       setItem: (key, value) => { storage[key] = JSON.parse(value) }
     },
     setInterval: () => 1,
-    clearInterval: () => {}
+    clearInterval: () => {},
+    innerWidth: 1280,
+    innerHeight: 800
   }
 
   const context = { window, document, console, fetch: null }
   vm.createContext(context)
   vm.runInContext(clientSource, context)
+  globalThis.document = document
 
   return { window, document, byId, loadedSpec, context }
 }
