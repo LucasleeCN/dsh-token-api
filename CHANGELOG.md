@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+- Fix collapsed widget not opening the detail panel after drag support (`pointerdown` was suppressing the click event).
+
 ## 1.0.0
 
 First public release.
