@@ -76,6 +76,8 @@ function createHarness(storage = {}) {
     head: makeElement('head'),
     body: makeElement('body'),
     documentElement: { clientWidth: 1280 },
+    addEventListener: () => {},
+    removeEventListener: () => {},
     querySelector() {
       return null
     },
