@@ -75,6 +75,10 @@ function createHarness(storage = {}) {
     },
     head: makeElement('head'),
     body: makeElement('body'),
+    documentElement: { clientWidth: 1280 },
+    querySelector() {
+      return null
+    },
     querySelectorAll() {
       return []
     }
@@ -94,6 +98,10 @@ function createHarness(storage = {}) {
     },
     setInterval: () => 1,
     clearInterval: () => {},
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    setTimeout: (fn) => setTimeout(fn, 0),
+    clearTimeout: id => clearTimeout(id),
     innerWidth: 1280,
     innerHeight: 800
   }
