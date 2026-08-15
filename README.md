@@ -22,15 +22,27 @@ UI 完全使用 Harness 官方设计变量（`--dsw-alias-*`），自动适配�
 dsh-client-ui-token-billing/
 ├─ package.json
 ├─ cordis.patch.yml
-└─ lib/
-   ├─ index.js      # Host 半侧（空 Loader 入口）
-   └─ client.js     # Browser 半侧（浮动面板）
+├─ lib/
+│  ├─ index.js      # Host 半侧（空 Loader 入口）
+│  └─ client.js     # Browser 半侧（浮动面板）
+└─ test/
+   └─ client.test.mjs
 ```
 
 ## 安装
 
 该插件是一个标准的 `dsh.client` 双面包，必须能被 profile 的
 `ctx.baseUrl` 解析到（通常就是 profile 自己的 `node_modules`）。
+
+发布到 GitHub 后，也可以直接用 npm 从 Git 安装（把地址换成你的仓库）：
+
+```json
+{
+  "dependencies": {
+    "dsh-client-ui-token-billing": "github:你的用户名/dsh-client-ui-token-billing"
+  }
+}
+```
 
 ### 方法 A：作为 profile bundle（推荐）
 
@@ -101,6 +113,16 @@ Content-Type: application/json
 - 首次打开某个模型时，若命中内置预设则填入示例价，否则显示“未配置价格”。
 - 点击 ⚙ 可编辑并保存该模型价格；保存后立即重算并持久化到浏览器
   `localStorage`（键：`dsh-client-ui-token-billing.prices.v1`）。
+
+## 开发
+
+```powershell
+npm run check   # 语法检查 + 测试
+npm test        # 运行测试
+```
+
+测试使用 `node:vm` 加载 `lib/client.js`，以模拟的 `session.list` /
+`session.models` RPC 返回验证面板渲染、费用计算和未配置价格提示。
 
 ## 许可
 
